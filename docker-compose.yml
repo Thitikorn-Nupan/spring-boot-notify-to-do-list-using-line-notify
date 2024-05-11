@@ -1,0 +1,12 @@
+version: '3'
+services:
+  backend:
+    container_name: spring-boot-api-line-notify
+    build:
+      # way to accessing Dockerfile on folder
+      context: . # relative to docker-compose command running directory (.) means this folder
+      dockerfile: Dockerfile # specify path to Dockerfile it starts on current folder application
+    image: spring-boot-api-line-notify
+    ports:
+      # port access app in container : port your app in container
+      - '8080:8080'
