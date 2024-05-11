@@ -80,7 +80,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 1 hour
-                    TimeUnit.HOURS.sleep(1);
+                    // TimeUnit.HOURS.sleep(1);
                     logback.log.debug("1 hour , after sent message,sticker to line (About 7 AM)");
                 }
                 // if hour == 8 AM And < 11 AM Do ...
@@ -98,7 +98,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 3 hours
-                    TimeUnit.HOURS.sleep(3);
+                    // TimeUnit.HOURS.sleep(3);
                     logback.log.debug("3 hours , after sent message,sticker to line (About 8 AM)");
                 }
                 // if hour >= 11 AM And < 13 PM Do ...
@@ -116,7 +116,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 2 hours
-                    TimeUnit.HOURS.sleep(2);
+                    // TimeUnit.HOURS.sleep(2);
                     logback.log.debug("2 hours , after sent message,sticker to line (About 11 AM)");
                 }
                 // if hour == 13 PM Do ...
@@ -134,7 +134,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 1 hour
-                    TimeUnit.HOURS.sleep(1);
+                    // TimeUnit.HOURS.sleep(1);
                     logback.log.debug("1 hour , after sent message,sticker to line (About 13 PM)");
                 }
                 // if hour >= 14 PM And < 18 PM Do ...
@@ -152,7 +152,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 4 hours
-                    TimeUnit.HOURS.sleep(4);
+                    // TimeUnit.HOURS.sleep(4);
                     logback.log.debug("4 hours , after sent message to line (About 14 PM)");
                 }
                 // if hour == 18 PM Do ...
@@ -170,7 +170,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 1 hour
-                    TimeUnit.HOURS.sleep(1);
+                    // TimeUnit.HOURS.sleep(1);
                     logback.log.debug("1 hour , after sent message,sticker to line (About 18 PM)");
                 }
                 // if hour >= 19 PM And < 21 PM Do ...
@@ -188,7 +188,7 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 2 hours
-                    TimeUnit.HOURS.sleep(2);
+                    // TimeUnit.HOURS.sleep(2);
                     logback.log.debug("2 hours , after sent message,sticker to line (At 19 PM)");
                 }
                 //
@@ -206,10 +206,12 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId); // send message to line
                     // stop all threads 10 hours
-                    TimeUnit.HOURS.sleep(10);
+                    // TimeUnit.HOURS.sleep(10);
                     // then it's new day
                     logback.log.debug("10 hours , after sent message to line (At 21 PM)");
                 }
+
+                 TimeUnit.MINUTES.sleep(15);
 
             } // 11 , 12 , ... , 14
             else {
