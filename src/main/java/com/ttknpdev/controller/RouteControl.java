@@ -51,174 +51,178 @@ public class RouteControl {
         int day, hour,stickerPackageId = 11537 ,stickerId = 52002734;
         String currentTime, message;
 
-        while (condition) {
+        try {
+            while (condition) {
 
-            // any rounds will get current datetime
-            currentTime = getSetOfCurrentDateTime()[0].toString();
-            day = (int) getSetOfCurrentDateTime()[1];
-            hour = (int) getSetOfCurrentDateTime()[2];
+                // any rounds will get current datetime
+                currentTime = getSetOfCurrentDateTime()[0].toString();
+                day = (int) getSetOfCurrentDateTime()[1];
+                hour = (int) getSetOfCurrentDateTime()[2];
 
-            // 10-05-2024 16:29:05
-            logback.log.debug("currentTime : {}", currentTime);
+                // 10-05-2024 16:29:05
+                logback.log.debug("currentTime : {}", currentTime);
 
-            if (day != 15) {
-                // 11 , 12 , ... , 14
-                logback.log.debug("day : {}",day);
-                // if hour == 7 AM Do ...
+                if (day != 15) {
+                    // 11 , 12 , ... , 14
+                    logback.log.debug("day : {}",day);
+                    // if hour == 7 AM Do ...
 
-                if (hour == 7) {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "**** 7 AM , Time to wake up **\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 1 hour
-                    // ***** it closes before timing (18 minutes after request)
-                    // TimeUnit.HOURS.sleep(1);
-                    logback.log.debug("after sent message,sticker to line (About 7 AM)");
-                }
-                // if hour == 8 AM And < 11 AM Do ...
-                else if (hour >= 8 && hour < 11) {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "******* 8 AM - 11 AM *********\n" +
-                            "****** Time to practice *******\n" +
-                            "*********** Maths ************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 3 hours
-                    // TimeUnit.HOURS.sleep(3);
-                    logback.log.debug("after sent message,sticker to line (About 8 AM to 11 AM)");
-                }
-                // if hour >= 11 AM And < 13 PM Do ...
-                else if (hour >= 11 && hour < 13) {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "******** 11 AM - 13 PM *******\n" +
-                            "********** Break time *********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 2 hours
-                    // TimeUnit.HOURS.sleep(2);
-                    logback.log.debug("after sent message,sticker to line (About 11 AM to 13 PM)");
-                }
-                // if hour == 13 PM Do ...
-                else if (hour == 13) {
-                    message = "**********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "******** 13 PM - 14 PM *******\n" +
-                            "******* Time to reading *******\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 1 hour
-                    // TimeUnit.HOURS.sleep(1);
-                    logback.log.debug("after sent message,sticker to line (About 13 PM)");
-                }
-                // if hour >= 14 PM And < 18 PM Do ...
-                else if (hour >= 14 && hour < 18) {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "******** 14 PM - 18 PM *******\n" +
-                            "****** Time to practice *******\n" +
-                            "*********** Coding ***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 4 hours
-                    // TimeUnit.HOURS.sleep(4);
-                    logback.log.debug("after sent message to line (About 14 PM to 18 PM)");
-                }
-                // if hour == 18 PM Do ...
-                else if (hour == 18) {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "******** 18 PM - 19 PM *******\n" +
-                            "********** Break time *********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 1 hour
-                    // TimeUnit.HOURS.sleep(1);
-                    logback.log.debug("after sent message,sticker to line (About 18 PM)");
-                }
-                // if hour >= 19 PM And < 21 PM Do ...
-                else if (hour >= 19 && hour < 21) {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "****** 19 PM - 21 PM *********\n" +
-                            "****** Time to practice *******\n" +
-                            "************ Maths ***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
-                    // stop all threads 2 hours
-                    // TimeUnit.HOURS.sleep(2);
-                    logback.log.debug("after sent message,sticker to line (At 19 PM to 21 PM)");
-                }
-                //
+                    if (hour == 7) {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "**** 7 AM , Time to wake up **\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 1 hour
+                        // ***** it closes before timing (18 minutes after request)
+                        // TimeUnit.HOURS.sleep(1);
+                        logback.log.debug("after sent message,sticker to line (About 7 AM)");
+                    }
+                    // if hour == 8 AM And < 11 AM Do ...
+                    else if (hour >= 8 && hour < 11) {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "******* 8 AM - 11 AM *********\n" +
+                                "****** Time to practice *******\n" +
+                                "*********** Maths ************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 3 hours
+                        // TimeUnit.HOURS.sleep(3);
+                        logback.log.debug("after sent message,sticker to line (About 8 AM to 11 AM)");
+                    }
+                    // if hour >= 11 AM And < 13 PM Do ...
+                    else if (hour >= 11 && hour < 13) {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "******** 11 AM - 13 PM *******\n" +
+                                "********** Break time *********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 2 hours
+                        // TimeUnit.HOURS.sleep(2);
+                        logback.log.debug("after sent message,sticker to line (About 11 AM to 13 PM)");
+                    }
+                    // if hour == 13 PM Do ...
+                    else if (hour == 13) {
+                        message = "**********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "******** 13 PM - 14 PM *******\n" +
+                                "******* Time to reading *******\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 1 hour
+                        // TimeUnit.HOURS.sleep(1);
+                        logback.log.debug("after sent message,sticker to line (About 13 PM)");
+                    }
+                    // if hour >= 14 PM And < 18 PM Do ...
+                    else if (hour >= 14 && hour < 18) {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "******** 14 PM - 18 PM *******\n" +
+                                "****** Time to practice *******\n" +
+                                "*********** Coding ***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 4 hours
+                        // TimeUnit.HOURS.sleep(4);
+                        logback.log.debug("after sent message to line (About 14 PM to 18 PM)");
+                    }
+                    // if hour == 18 PM Do ...
+                    else if (hour == 18) {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "******** 18 PM - 19 PM *******\n" +
+                                "********** Break time *********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 1 hour
+                        // TimeUnit.HOURS.sleep(1);
+                        logback.log.debug("after sent message,sticker to line (About 18 PM)");
+                    }
+                    // if hour >= 19 PM And < 21 PM Do ...
+                    else if (hour >= 19 && hour < 21) {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "****** 19 PM - 21 PM *********\n" +
+                                "****** Time to practice *******\n" +
+                                "************ Maths ***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
+                        // stop all threads 2 hours
+                        // TimeUnit.HOURS.sleep(2);
+                        logback.log.debug("after sent message,sticker to line (At 19 PM to 21 PM)");
+                    }
+                    //
+                    else {
+                        message = "***********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "******* 21 PM - 7 AM *********\n" +
+                                "********** Break time *********\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************\n" +
+                                "*******************************";
+                        // send message,sticker to line
+                        lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId); // send message to line
+                        // stop all threads 10 hours
+                        // TimeUnit.HOURS.sleep(10);
+                        // then it's new day
+                        logback.log.debug("after sent message to line (At 21 PM to 7 AM)");
+                    }
+                    TimeUnit.MINUTES.sleep(2);
+                } // 11 , 12 , ... , 14
                 else {
-                    message = "***********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "******* 21 PM - 7 AM *********\n" +
-                            "********** Break time *********\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************\n" +
-                            "*******************************";
-                    // send message,sticker to line
-                    lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId); // send message to line
-                    // stop all threads 10 hours
-                    // TimeUnit.HOURS.sleep(10);
-                    // then it's new day
-                    logback.log.debug("after sent message to line (At 21 PM to 7 AM)");
+                    // 15
+                    logback.log.debug("day : {} , Application is closing",day);
+                    condition = false;
                 }
-                 TimeUnit.MINUTES.sleep(15);
-            } // 11 , 12 , ... , 14
-            else {
-                // 15
-                logback.log.debug("day : {} , Application is closing",day);
-                condition = false;
-            }
-        } // ended while loop
+            } // ended while loop
+        } catch (InterruptedException interruptedException) {
+            logback.log.debug("interrupted : {}",interruptedException);
+        }
         return ResponseEntity.ok("ok");
     }
 
