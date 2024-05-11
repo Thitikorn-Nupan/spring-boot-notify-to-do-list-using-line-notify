@@ -1,8 +1,10 @@
 HELP.md
+# ******************************************************************************************************************
 # ****** remember when you deploy docker on webserver (Talking about render web service using Git repo for building)
-#  ***** you have to push target folder on project
-#  ***** it asset all project for execute
-#  ***** and it will see Dockerfile on your project
+# ****** you have to push target folder on project
+# ****** it asset all project for execute
+# ****** and it will see Dockerfile on your project
+# ******************************************************************************************************************
 # target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
