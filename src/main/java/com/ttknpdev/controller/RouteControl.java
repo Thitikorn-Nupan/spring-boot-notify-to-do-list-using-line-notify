@@ -51,8 +51,9 @@ public class RouteControl {
         int day, hour,stickerPackageId = 11537 ,stickerId = 52002734;
         String currentTime, message;
 
-        try {
-            while (condition) {
+        while (condition) {
+
+            try {
 
                 // any rounds will get current datetime
                 currentTime = getSetOfCurrentDateTime()[0].toString();
@@ -61,6 +62,7 @@ public class RouteControl {
 
                 // 10-05-2024 16:29:05
                 logback.log.debug("currentTime : {}", currentTime);
+
 
                 if (day != 15) {
                     // 11 , 12 , ... , 14
@@ -213,17 +215,26 @@ public class RouteControl {
                         logback.log.debug("after sent message to line (At 21 PM to 7 AM)");
                     }
                     // 2 minutes work fine
-                    TimeUnit.MINUTES.sleep(2);
+                    // TimeUnit.MINUTES.sleep(2);
                 } // 11 , 12 , ... , 14
                 else {
                     // 15
                     logback.log.debug("day : {} , Application is closing",day);
                     condition = false;
                 }
-            } // ended while loop
-        } catch (InterruptedException interruptedException) {
-            logback.log.debug("interrupted : {}",interruptedException);
-        }
+
+            }
+            catch (Exception exception) {
+                logback.log.debug("exception : {}",exception);
+
+            }
+            finally {
+
+                TimeUnit.MINUTES.sleep(5);
+
+            }
+
+        } // ended while loop
         return ResponseEntity.ok("ok");
     }
 
