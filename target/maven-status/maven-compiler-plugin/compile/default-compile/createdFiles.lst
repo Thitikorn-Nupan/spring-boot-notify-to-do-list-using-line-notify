@@ -3,3 +3,4 @@ com\ttknpdev\repository\LineNotifyRepo.class
 com\ttknpdev\controller\RouteControl.class
 com\ttknpdev\UnderstandThreadsWithSpringBootApiApplication.class
 com\ttknpdev\service\LineNotifyService.class
+com\ttknpdev\resttemplate\RequestRenderServiceServer.class

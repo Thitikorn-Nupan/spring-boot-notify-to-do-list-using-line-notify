@@ -2,6 +2,7 @@ package com.ttknpdev.controller;
 
 import com.ttknpdev.logging.Logback;
 import com.ttknpdev.repository.LineNotifyRepo;
+import com.ttknpdev.resttemplate.RequestRenderServiceServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +13,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 /*
-digit time
-
-17:59 -> 18:00 -> เที่ยงคืน 00:00:47 real time follow pc
-
-ED433732392TH
+render sleeps service after 15 minute
 */
 @RestController
 public class RouteControl {
@@ -24,11 +21,12 @@ public class RouteControl {
     private final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     private LineNotifyRepo lineNotifyRepo;
     private Logback logback;
-
+    private RequestRenderServiceServer requestRenderServiceServer;
     @Autowired
     public RouteControl(LineNotifyRepo lineNotifyRepo) {
         logback = new Logback(RouteControl.class);
         this.lineNotifyRepo = lineNotifyRepo;
+        requestRenderServiceServer = new RequestRenderServiceServer();
     }
 
 
@@ -223,15 +221,16 @@ public class RouteControl {
                     condition = false;
                 }
 
+
             }
+
             catch (Exception exception) {
                 logback.log.debug("exception : {}",exception);
-
             }
+
             finally {
-
-                TimeUnit.MINUTES.sleep(5);
-
+                TimeUnit.MINUTES.sleep(10);
+                requestRenderServiceServer.requestRenderServer(); // for active web server
             }
 
         } // ended while loop
