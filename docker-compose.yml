@@ -9,4 +9,4 @@ services:
     image: spring-boot-api-line-notify
     ports:
       # port access app in container : port your app in container
-      - '8080:8080'
+      - '8081:8080'
