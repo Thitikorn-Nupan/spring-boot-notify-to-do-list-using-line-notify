@@ -213,7 +213,7 @@ public class RouteControl {
                         logback.log.debug("after sent message to line (At 21 PM to 7 AM)");
                     }
                     // 2 minutes work fine
-                    TimeUnit.MINUTES.sleep(5);
+                    TimeUnit.MINUTES.sleep(2);
                 } // 11 , 12 , ... , 14
                 else {
                     // 15
