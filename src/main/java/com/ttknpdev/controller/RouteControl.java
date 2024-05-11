@@ -80,8 +80,9 @@ public class RouteControl {
                     // send message,sticker to line
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 1 hour
+                    // ***** it closes before timing (18 minutes after request)
                     // TimeUnit.HOURS.sleep(1);
-                    logback.log.debug("1 hour , after sent message,sticker to line (About 7 AM)");
+                    logback.log.debug("after sent message,sticker to line (About 7 AM)");
                 }
                 // if hour == 8 AM And < 11 AM Do ...
                 else if (hour >= 8 && hour < 11) {
@@ -99,7 +100,7 @@ public class RouteControl {
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 3 hours
                     // TimeUnit.HOURS.sleep(3);
-                    logback.log.debug("3 hours , after sent message,sticker to line (About 8 AM)");
+                    logback.log.debug("after sent message,sticker to line (About 8 AM to 11 AM)");
                 }
                 // if hour >= 11 AM And < 13 PM Do ...
                 else if (hour >= 11 && hour < 13) {
@@ -117,7 +118,7 @@ public class RouteControl {
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 2 hours
                     // TimeUnit.HOURS.sleep(2);
-                    logback.log.debug("2 hours , after sent message,sticker to line (About 11 AM)");
+                    logback.log.debug("after sent message,sticker to line (About 11 AM to 13 PM)");
                 }
                 // if hour == 13 PM Do ...
                 else if (hour == 13) {
@@ -135,7 +136,7 @@ public class RouteControl {
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 1 hour
                     // TimeUnit.HOURS.sleep(1);
-                    logback.log.debug("1 hour , after sent message,sticker to line (About 13 PM)");
+                    logback.log.debug("after sent message,sticker to line (About 13 PM)");
                 }
                 // if hour >= 14 PM And < 18 PM Do ...
                 else if (hour >= 14 && hour < 18) {
@@ -153,7 +154,7 @@ public class RouteControl {
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 4 hours
                     // TimeUnit.HOURS.sleep(4);
-                    logback.log.debug("4 hours , after sent message to line (About 14 PM)");
+                    logback.log.debug("after sent message to line (About 14 PM to 18 PM)");
                 }
                 // if hour == 18 PM Do ...
                 else if (hour == 18) {
@@ -171,7 +172,7 @@ public class RouteControl {
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 1 hour
                     // TimeUnit.HOURS.sleep(1);
-                    logback.log.debug("1 hour , after sent message,sticker to line (About 18 PM)");
+                    logback.log.debug("after sent message,sticker to line (About 18 PM)");
                 }
                 // if hour >= 19 PM And < 21 PM Do ...
                 else if (hour >= 19 && hour < 21) {
@@ -189,7 +190,7 @@ public class RouteControl {
                     lineNotifyRepo.sendLineNotifyMessageAndSticker(message, stickerPackageId, stickerId);
                     // stop all threads 2 hours
                     // TimeUnit.HOURS.sleep(2);
-                    logback.log.debug("2 hours , after sent message,sticker to line (At 19 PM)");
+                    logback.log.debug("after sent message,sticker to line (At 19 PM to 21 PM)");
                 }
                 //
                 else {
@@ -208,11 +209,9 @@ public class RouteControl {
                     // stop all threads 10 hours
                     // TimeUnit.HOURS.sleep(10);
                     // then it's new day
-                    logback.log.debug("10 hours , after sent message to line (At 21 PM)");
+                    logback.log.debug("after sent message to line (At 21 PM to 7 AM)");
                 }
-
                  TimeUnit.MINUTES.sleep(15);
-
             } // 11 , 12 , ... , 14
             else {
                 // 15
