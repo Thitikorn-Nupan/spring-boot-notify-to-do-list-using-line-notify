@@ -19,16 +19,14 @@ public class LineNotifyService implements LineNotifyRepo {
     private String lineNotifyUrl;
     @Value(value = "${line.notify.token}")
     private String lineNotifyToken;
-
     // initial in constructor
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+    private final Logback logback;
     private HttpHeaders headers;
-    private Logback logback;
-
     // No HttpMessageConverter for java.util.LinkedHashMap,Map,... and content type "application/x-www-form-urlencoded"
     // MultiValueMap use it. it's the best way
     private HttpEntity<MultiValueMap<String, Object>> httpEntity;
-    private MultiValueMap<String, Object> map;
+    private final MultiValueMap<String, Object> map;
 
     public LineNotifyService() {
         restTemplate = new RestTemplate();
@@ -47,25 +45,17 @@ public class LineNotifyService implements LineNotifyRepo {
 
 
     private LinkedHashMap<String, Object> callLineNotifyByMultiValueMap(MultiValueMap<String, Object> map) throws Exception {
-
         // **** have to create new object when use method Always
         headers = new HttpHeaders();
-
         logback.log.info("callLineNotifyByMultiValueMap(MultiValueMap) method is working");
         logback.log.info("map : {}", map); // map : {message=hello}
-
         // for application/ x-www-form-urlencoded. Or You can set like headers.add("Content..","")
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.add("Authorization", "Bearer " + lineNotifyToken);
-
         httpEntity = new HttpEntity<>(map, headers);
-
         ResponseEntity<LinkedHashMap> response = restTemplate.exchange(lineNotifyUrl, HttpMethod.POST, httpEntity, LinkedHashMap.class);
-
         // <200 OK OK,{status=200, message=ok},[Server:"nginx", Date:"Thu, 09 May 2024 06:15:35 GMT", Content-Type:"application/json", Transfer-Encoding:"chunked", Keep-Alive:"timeout=9", Vary:"Accept-Encoding", X-RateLimit-Limit:"1000", X-RateLimit-ImageLimit:"50", X-RateLimit-Remaining:"974", X-RateLimit-ImageRemaining:"50", X-RateLimit-Reset:"1715236089", X-Robots-Tag:"noindex, nofollow, nosnippet, noarchive"]>
         logback.log.info("response : {}", response);
-
         return response.getBody();
-
     }
 }

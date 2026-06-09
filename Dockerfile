@@ -16,10 +16,8 @@ ADD ${JAR_FILE} /app/application.jar
 # for running spring boot in container
 # Like you run application on your current path
 # java -jar target/basic-api-in-docker-container.jar
-
 ## Make port 8080 available to the world outside container (same port your app)
 EXPOSE 8080
-
 ENTRYPOINT ["java","-jar","/app/application.jar"]
 # docker run -d -p 8080:8081 --name <name container (no exist)> <image id (exist)>
 # deploye to render on 21/4/24

@@ -1,7 +1,5 @@
 package com.ttknpdev.repository;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.LinkedHashMap;
 
 public interface LineNotifyRepo {
